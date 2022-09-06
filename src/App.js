@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import SetApiKey from './pages/SetApiKey';
+import './styles.css';
+import {Routes, Route} from 'react-router-dom';
+import Home from 'pages/home';
+import City from 'pages/city';
+import PrivateRoute from 'components/PrivateRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<PrivateRoute><Home /></PrivateRoute> } />
+      <Route path="/SetApiKey" element={<SetApiKey />} />
+      <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/city/:cityId" element={<PrivateRoute><City /></PrivateRoute>} />
+    </Routes>
+    
   );
 }
 
